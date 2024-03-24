@@ -19,4 +19,15 @@ getCartas = (req, res) =>{
     res.status(200).send(cartas)
 }
 
-module.exports = {getCartas}
+getOneCarta = (req,res) =>{
+    let id = req.params.id;
+    const carta = cartas.find((item) => item.id === Number(id))
+    if(carta){
+        res.status(200).send(carta)
+    } else{
+        res.status(404).send("Não á cartas contempladas com esse id")
+    }
+    
+}
+
+module.exports = {getCartas, getOneCarta}
