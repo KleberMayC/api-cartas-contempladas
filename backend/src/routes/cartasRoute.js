@@ -6,7 +6,7 @@ router.get('/', cartasController.getCartas)
 
 router.get('/:id', cartasController.getOneCarta)
 
-
+router.post('/', cartasController.createCartas)
 
 
 module.exports = router
