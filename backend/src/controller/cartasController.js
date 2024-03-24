@@ -1,17 +1,17 @@
 const cartas = [
-    {'numero': 1, 
-    "tipo": 'imoveis', 
-    "valorEntrada": 12000, 
-    "valorCredito": 50000, 
-    "qtdParcelas": 20,
-    "ativo": false  },
+    // {'numero': 1, 
+    // "tipo": 'imoveis', 
+    // "valorEntrada": 12000, 
+    // "valorCredito": 50000, 
+    // "qtdParcelas": 20,
+    // "ativo": false  },
 
-    {'numero': 2, 
-    "tipo": 'veiculos', 
-    "valorEntrada": 22000, 
-    "valorCredito": 200000, 
-    "qtdParcelas": 60,
-    "ativo": true  }
+    // {'numero': 2, 
+    // "tipo": 'veiculos', 
+    // "valorEntrada": 22000, 
+    // "valorCredito": 200000, 
+    // "qtdParcelas": 60,
+    // "ativo": true  }
 
 ]
 
@@ -64,7 +64,7 @@ removeCarta = (req, res) =>{
     let indice = findCartaIndex(numero)
 
     if(indice === -1){
-        return res.status(404).send(`A carta de número ${numero} não existe`)
+        return res.status(404).send(`A carta de número ${numero} não existe ou foi removida`)
     }
 
     cartas.splice(indice,1)
