@@ -1,12 +1,12 @@
 const cartas = [
-    {'id': 1, 
+    {'numero': 1, 
     "tipo": 'imoveis', 
     "valorEntrada": 12000, 
     "valorCredito": 50000, 
     "qtdParcelas": 20,
     "ativo": false  },
 
-    {'id': 2, 
+    {'numero': 2, 
     "tipo": 'veiculos', 
     "valorEntrada": 22000, 
     "valorCredito": 200000, 
@@ -20,12 +20,12 @@ getCartas = (req, res) =>{
 }
 
 getOneCarta = (req,res) =>{
-    let id = req.params.id;
-    const carta = cartas.find((item) => item.id === Number(id))
+    let numero = req.params.numero;
+    const carta = cartas.find((item) => item.numero === Number(numero))
     if(carta){
         res.status(200).send(carta)
     } else{
-        res.status(404).send("Não á cartas contempladas com esse id")
+        res.status(404).send("Não á cartas contempladas com esse numero")
     }
     
 }
@@ -33,10 +33,10 @@ getOneCarta = (req,res) =>{
 createCartas = (req, res) => {
     const carta = req.body;
     
-    // Verifica se já existe uma carta com o mesmo ID
-    const existingCarta = cartas.find(item => item.id === carta.id);
+    // Verifica se já existe uma carta com o mesmo numero
+    const existingCarta = cartas.find(item => item.numero === carta.numero);
     if (existingCarta) {
-      return res.status(400).json({ error: 'Já existe uma carta com esse ID.' });
+      return res.status(400).json({ error: 'Já existe uma carta com esse numero.' });
     }
     
     if (Object.keys(carta).length > 0) {

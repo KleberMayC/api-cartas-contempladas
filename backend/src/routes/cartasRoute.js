@@ -4,7 +4,7 @@ const cartasController = require("./../controller/cartasController")
 
 router.get('/', cartasController.getCartas)
 
-router.get('/:id', cartasController.getOneCarta)
+router.get('/:numero', cartasController.getOneCarta)
 
 router.post('/', cartasController.createCartas)
 
