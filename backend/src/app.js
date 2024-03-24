@@ -9,6 +9,8 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(cors())
 
+const db = require("../db/models")
+
 app.use('/cartas', cartasRoute)
 
 module.exports = app
