@@ -10,4 +10,6 @@ router.post('/', cartasController.createCartas)
 
 router.put('/:numero', cartasController.updateCarta)
 
+router.delete('/:numero', cartasController.removeCarta)
+
 module.exports = router

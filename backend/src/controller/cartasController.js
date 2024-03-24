@@ -59,4 +59,16 @@ findCartaIndex = (numero) => {
     return indice;
 }
 
-module.exports = {getCartas, getOneCarta, createCartas, updateCarta}
+removeCarta = (req, res) =>{
+    let numero = req.params.numero;
+    let indice = findCartaIndex(numero)
+
+    if(indice === -1){
+        return res.status(404).send(`A carta de número ${numero} não existe`)
+    }
+
+    cartas.splice(indice,1)
+    res.status(200).send(`A carta de número <strong>${numero}</strong> foi excluida com sucesso!`)
+}
+
+module.exports = {getCartas, getOneCarta, createCartas, updateCarta, removeCarta}
