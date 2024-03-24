@@ -8,5 +8,6 @@ router.get('/:numero', cartasController.getOneCarta)
 
 router.post('/', cartasController.createCartas)
 
+router.put('/:numero', cartasController.updateCarta)
 
 module.exports = router

@@ -47,4 +47,16 @@ createCartas = (req, res) => {
     }
   }
 
-module.exports = {getCartas, getOneCarta, createCartas}
+updateCarta = (req, res) =>{
+    let numero = req.params.numero
+    let indice = findCartaIndex(numero)
+    cartas[indice] = req.body
+    res.status(201).send("Carta atualizada com sucesso")
+}
+
+findCartaIndex = (numero) => {
+    const indice = cartas.findIndex((item) => item.numero === Number(numero))
+    return indice;
+}
+
+module.exports = {getCartas, getOneCarta, createCartas, updateCarta}
