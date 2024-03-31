@@ -6,10 +6,9 @@ const database = require("../config/database");
 
 const cartasRoute = require("./routes/cartasRoute");
 const cors = require("cors");
-
+app.set("database", database);
 app.use(express.json());
 app.database = database;
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
