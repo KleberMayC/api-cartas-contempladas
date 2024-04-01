@@ -10,7 +10,7 @@ export default function Dashboard() {
   const [valorCredito, setValorCredito] = useState("");
   const [valorEntrada, setValorEntrada] = useState("");
   const [editingCarta, setEditingCarta] = useState(null);
-  // const [enviado, setEnviado] = useState(false);
+  const [message, setMessage] = useState(""); // Novo estado para controlar as mensagens
 
   useEffect(() => {
     loadCartas();
@@ -23,6 +23,14 @@ export default function Dashboard() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  // Função para exibir a mensagem
+  const showMessage = (message) => {
+    setMessage(message);
+    setTimeout(() => {
+      setMessage("");
+    }, 5000);
   };
 
   const addCarta = async () => {
@@ -38,15 +46,17 @@ export default function Dashboard() {
 
       const response = await api.post("cartas", newCarta);
 
-      if (response.ok) {
+      if (response.status === 201) {
         const updatedCartas = [...cartas, response.data];
         setCartas(updatedCartas);
         clearForm();
+        showMessage("Carta adicionada com sucesso!"); // Exibir mensagem de sucesso
       } else {
         throw new Error("Falha ao adicionar a carta");
       }
     } catch (error) {
       console.log(error);
+      showMessage("Falha ao adicionar a carta"); // Exibir mensagem de erro
     }
   };
 
@@ -69,8 +79,10 @@ export default function Dashboard() {
       setCartas(updatedCartas);
       clearForm();
       setEditingCarta(null);
+      showMessage("Carta atualizada com sucesso!"); // Exibir mensagem de sucesso
     } catch (error) {
       console.log(error);
+      showMessage("Falha ao atualizar a carta"); // Exibir mensagem de erro
     }
   };
 
@@ -78,8 +90,10 @@ export default function Dashboard() {
     try {
       await api.delete(`cartas/${numeroDaCarta}`);
       setCartas(cartas.filter((carta) => carta.numero !== numeroDaCarta));
+      showMessage("Carta excluída com sucesso!"); // Exibir mensagem de sucesso
     } catch (error) {
       console.log(error);
+      showMessage("Falha ao excluir a carta"); // Exibir mensagem de erro
     }
   };
 
@@ -93,10 +107,10 @@ export default function Dashboard() {
 
   const startEditing = (carta) => {
     setNumero(carta.numero);
-    setQtdParcelas(carta.qtdqtdParcelas);
+    setQtdParcelas(carta.qtdParcelas);
     setTipo(carta.tipo);
-    setValorCredito(carta.credito);
-    setValorEntrada(carta.entrada);
+    setValorCredito(carta.valorCredito);
+    setValorEntrada(carta.valorEntrada);
     setEditingCarta(carta);
   };
 
@@ -117,12 +131,11 @@ export default function Dashboard() {
           value={qtdParcelas}
           onChange={(e) => setQtdParcelas(e.target.value)}
         />
-        <input
-          type="text"
-          placeholder="Tipo de Carta"
-          value={tipo}
-          onChange={(e) => setTipo(e.target.value)}
-        />
+        <select value={tipo} onChange={(e) => setTipo(e.target.value)}>
+          <option value="">Selecione um tipo</option>
+          <option value="IMOVEL">IMOVEL</option>
+          <option value="VEICULO">VECULOS</option>
+        </select>
         <input
           type="text"
           placeholder="Crédito"
@@ -158,6 +171,9 @@ export default function Dashboard() {
             </div>
           </div>
         ))}
+      </div>
+      <div className="message-container">
+        {message && <div className="message">{message}</div>}
       </div>
     </div>
   );

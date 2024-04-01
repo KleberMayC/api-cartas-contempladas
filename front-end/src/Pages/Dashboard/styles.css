@@ -1,25 +1,9 @@
-/* .dashboard-container {
-    margin: 20px;
-  }
-  
-  .form-container {
-    margin-bottom: 20px;
-  }
-  
-  .form-container input {
-    margin-bottom: 10px;
-  }
-  
-  .carta-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .carta-item h3 {
-    margin-right: 10px;
-  }
-  
-  .carta-item button {
-    margin-left: 10px;
-  } */
+.message {
+  position: fixed;
+  color: #fff;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #08680c;
+  border: 1px solid #ccc;
+}
