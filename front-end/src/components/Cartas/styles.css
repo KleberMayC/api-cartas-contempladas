@@ -1,0 +1,21 @@
+.cartas-list-container {
+    margin: 20px;
+  }
+  
+  .cartas-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .carta-item {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .carta-item h2 {
+    margin-bottom: 10px;
+  }
