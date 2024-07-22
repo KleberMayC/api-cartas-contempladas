@@ -1,7 +1,7 @@
 
 # API DE CARTAS CONTEMPLADAS
 
-Projeto desenvoldo com a ideia de ser um facilitador para o usúario onde o mesmo pode acrescentar os dados atráves de um Dashboard e ser renderizado no Front-End.
+Projeto desenvolvido com a ideia de ser um facilitador para o usúario onde o mesmo pode acrescentar os dados atráves de um Dashboard e ser renderizado no Front-End.
 
 
 ## Documentação da API
